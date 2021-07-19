@@ -8,10 +8,23 @@ section {
     width: 100vw;
     height: 100vh;
     margin: 0;
-        img {
+        #background {
             display: block;
-            width: auto;
+            width: 65%;
             height: 100vh;
             margin: auto;
+            position: relative;
+            img:first-child {
+                width: auto;
+                height: 100%;
+            }
+            #cat {
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                left: 0;
+                bottom: 0;
+            }
         }
+
 }
