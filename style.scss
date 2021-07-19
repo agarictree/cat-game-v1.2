@@ -3,28 +3,22 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
-section {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
         #background {
-            display: block;
-            width: 65%;
-            height: 100vh;
+            display: inline-block;
+            width: auto;
+            height: 98vh;
             margin: auto;
             position: relative;
             img:first-child {
-                width: auto;
                 height: 100%;
             }
             #cat {
                 position: absolute;
-                width: 200px;
-                height: 200px;
+                width: auto;
+                height: 20%;
                 left: 0;
                 bottom: 0;
             }
         }
-
-}
