@@ -9,10 +9,15 @@
 </head>
 <body>
     <div id="start">
+        <div class="end none">Конец игры!</div>
         <button id="startBtn">start</button>
     </div>
         <div id="background">
-        <img src="images/fon.jpg" alt="">
+            <div class="counterBlock">
+                <span id="fishCount">0</span>
+                <span id="time">60s</span>
+            </div>
+        <img src="images/fon.jpg" alt="" id="backgroundImg">
         <img src="images/01.png" alt="" id="cat">
         </div>
         <script src="index.js"></script>

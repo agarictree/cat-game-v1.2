@@ -5,23 +5,38 @@ body {
     padding: 0;
     text-align: center;
 }
-        #background {
-            display: inline-block;
-            width: auto;
-            height: 98vh;
-            margin: auto;
-            position: relative;
-            img:first-child {
-                height: 100%;
+#background {
+    display: inline-block;
+    width: auto;
+    height: 98vh;
+    margin: auto;
+    position: relative;
+
+    #backgroundImg{
+        height: 100%;
+    }
+    #cat {
+        position: absolute;
+        width: auto;
+        height: 20%;
+        left: 0;
+        bottom: 50px;
+    }
+    .counterBlock {
+        position: absolute;
+        top: 4%;
+        left: 20%;
+        padding: 0;
+        width: 60%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+            span {
+                font-size: 40px;
+                font-weight: bolder;
             }
-            #cat {
-                position: absolute;
-                width: auto;
-                height: 20%;
-                left: 0;
-                bottom: 50px;
-            }
-        }
+    }
+}
 .fishfall_anim {
     width: 30px;
     height: auto;
@@ -38,19 +53,31 @@ body {
     left: 0;
     z-index: 10000;
     display: flex;
+    flex-flow: column wrap;
     justify-content: center;
-}
-#startBtn {
-    display: block;
-    height: 150px;
-    align-self: center;
-    font-size: 100px;
-    color: transparentize($color: white, $amount: 0.5);
-    text-transform: uppercase;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    padding: 10px;
-    cursor: pointer;
-    background-color: transparentize($color: black, $amount: 0.5);
+    #startBtn {
+        display: block;
+        height: 20%;
+        align-self: center;
+        font-size: 100px;
+        color: transparentize($color: white, $amount: 0.5);
+        text-transform: uppercase;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 10px;
+        cursor: pointer;
+        background-color: transparentize($color: black, $amount: 0.5);
+    }
+        .end {
+            color: transparentize($color: white, $amount: 0.5);
+            align-self: center;
+            font-size: 70px;
+            text-transform: uppercase;
+            display: block;
+            height: 20%;
+        }
+        .none {
+            display: none;
+        }
 }
