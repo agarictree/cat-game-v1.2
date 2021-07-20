@@ -1,5 +1,5 @@
 let cat = document.getElementById("cat");
-let container = cat.parentElement;
+let container = document.getElementById("background");
 let width = container.getBoundingClientRect().width;
 let height = container.getBoundingClientRect().height;
 let catCoords = cat.getBoundingClientRect();

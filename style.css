@@ -23,7 +23,7 @@ body {
   width: auto;
   height: 20%;
   left: 0;
-  bottom: 0;
+  bottom: 50px;
 }
 
 .fishfall_anim {
