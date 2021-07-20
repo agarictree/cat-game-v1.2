@@ -3,6 +3,7 @@ let container = cat.parentElement;
 let width = container.getBoundingClientRect().width;
 let height = container.getBoundingClientRect().height;
 let catCoords = cat.getBoundingClientRect();
+let startButton = document.getElementById("startBtn");
 
 function addKeypress(event) {
     let ar = "ArrowRight";
@@ -67,4 +68,8 @@ function fishfall(path, id) {
         };
     }, 100);
 }
-fishfall(path, id);
+function startGame(e) {
+    e.target.parentElement.remove();
+    fishfall(path, id);
+}
+startButton.addEventListener("click", startGame);

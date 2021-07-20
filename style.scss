@@ -23,9 +23,34 @@ body {
             }
         }
 .fishfall_anim {
-    width: 40px;
+    width: 30px;
     height: auto;
     position: absolute;
     top: 0;
     left: 0;
+}
+#start {
+    width: 100vw;
+    height: 100vh;
+    background-color: transparentize($color: black, $amount: 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+}
+#startBtn {
+    display: block;
+    height: 150px;
+    align-self: center;
+    font-size: 100px;
+    color: transparentize($color: white, $amount: 0.5);
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+    background-color: transparentize($color: black, $amount: 0.5);
 }
