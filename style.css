@@ -25,3 +25,11 @@ body {
   left: 0;
   bottom: 0;
 }
+
+.fishfall_anim {
+  width: 40px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
