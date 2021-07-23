@@ -1,6 +1,8 @@
 let cat = document.getElementById("cat");
 let container = document.getElementById("background");
-let width = container.getBoundingClientRect().width;
+let background = document.getElementById("backgroundImg");
+let width = background.getBoundingClientRect().width;
+console.log(width);
 let height = container.getBoundingClientRect().height;
 let catCoords = cat.getBoundingClientRect();
 let startBlock = document.getElementById("start");
@@ -8,18 +10,23 @@ let startButton = document.getElementById("startBtn");
 let fishCountBlock = document.getElementById("fishCount");
 let timeBlock = document.getElementById("time");
 let endBlock = document.getElementsByClassName("end")[0];
+let timeOverBlock = document.getElementsByClassName("timeOver")[0];
+let resultBlock = document.getElementById("result");
+let addedFish = document.getElementsByClassName("fishfall_anim");
 let fishCount = 0;
-let time = 60;
+let seconds = 10;
+let time = seconds;
+let timer;
 
 function addKeypress(event) {
     let ar = "ArrowRight";
     let al = "ArrowLeft";
     let catLeftPos1 = parseFloat(getComputedStyle(cat).left);
-    let catLeftPos2 = catCoords.left;
     let catWidth = catCoords.width;
+
     if(event.code == ar) {
         cat.style.left = catLeftPos1 + 30 + "px";
-        if(catLeftPos2 >= width) {
+        if((catLeftPos1 + catWidth) >= width) {
             cat.style.left = (width - catWidth) + "px";
         }
     }
@@ -59,15 +66,14 @@ let arr = [["images/02.png", "bad"], ["images/03.png", "fresh"]];
 
 let randomFish = getRandomIntInclusive(0, arr.length - 1);
 let [path, id] = arr[randomFish];
-console.log(path, id);
 
-function fishfall(path, id) {
-
+function fishfall(path, id, ms) {
+    time = seconds;
     let fish = addFish(path, id);
-
+    
     setInterval(() => {
 
-        if(fishCount >= 0) {
+        if(fishCount >= 0 ) {
         let fTop = parseFloat(getComputedStyle(fish).top);
         let fHeight = fish.offsetHeight;
     
@@ -97,12 +103,14 @@ function fishfall(path, id) {
                 fishCountBlock.textContent = fishCount;
             };
             
-            if(fishCount < 0) {
+            if(fishCount <= 0) {
                 fishCountBlock.textContent = 0;
+                timeBlock.textContent = 0;
                 document.body.append(startBlock);
                 endBlock.classList.remove("none");
+                clearInterval(timer);
                 fish.remove();
-                fishfall = false;
+                addedFish.remove();
             }
 
             let newRandomFish = getRandomIntInclusive(0, arr.length - 1);
@@ -110,14 +118,32 @@ function fishfall(path, id) {
             fish.remove();
            fish = addFish(newPath, newId);
         }
-    console.log(fishCount);
-    }, 100);
+        if(time == 0) {
+            fishCountBlock.textContent = 0;
+            document.body.append(startBlock);
+            resultBlock.textContent = fishCount;
+            timeOverBlock.classList.remove("none");
+            clearInterval(timer);
+            fish.remove();
+            time = seconds;
+        }
+    }, ms);
 }
 
+function tick() {
+        timer = setInterval(() => {
+            time -= 1;
+            timeBlock.textContent = `${time}s`;
+        }, 1000);
+        return timer;
+}
 
 function startGame(e) {
     e.target.parentElement.remove();
     fishCount = 0;
-    fishfall(path, id);
+    time = seconds;
+    tick();
+    fishfall(path, id, 150);
 }
+
 startButton.addEventListener("click", startGame);
