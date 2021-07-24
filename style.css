@@ -27,19 +27,31 @@ body {
 }
 
 #background .counterBlock {
+  border: 5px solid black;
+  width: 60%;
+  height: 5%;
+  padding: 5px;
   position: absolute;
   top: 4%;
   left: 20%;
-  padding: 0;
-  width: 60%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
 
-#background .counterBlock span {
-  font-size: 40px;
+#background .counterBlock div {
+  display: block;
+  padding: 0;
+  margin: 0;
+  width: 30%;
   font-weight: bolder;
+  text-align: center;
+}
+
+#background .counterBlock #pause {
+  display: block;
+  width: auto;
+  height: 100%;
 }
 
 .fishfall_anim {
@@ -50,7 +62,7 @@ body {
   left: 0;
 }
 
-#start {
+#start, .continueBlock {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
@@ -63,7 +75,7 @@ body {
   justify-content: center;
 }
 
-#start #startBtn {
+#start #startBtn, #start #continue, .continueBlock #startBtn, .continueBlock #continue {
   display: block;
   height: 20%;
   align-self: center;
@@ -78,7 +90,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#start .end, #start .timeOver {
+#start .end, #start .timeOver, .continueBlock .end, .continueBlock .timeOver {
   color: rgba(255, 255, 255, 0.5);
   align-self: center;
   font-size: 70px;
@@ -87,6 +99,10 @@ body {
   height: 20%;
 }
 
-#start .none {
+#start .none, .continueBlock .none {
+  display: none;
+}
+
+.none {
   display: none;
 }

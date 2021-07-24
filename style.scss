@@ -23,17 +23,28 @@ body {
         bottom: 50px;
     }
     .counterBlock {
+        border: 5px solid black;
+        width: 60%;
+        height: 5%;
+        padding: 5px;
         position: absolute;
         top: 4%;
         left: 20%;
-        padding: 0;
-        width: 60%;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-            span {
-                font-size: 40px;
+            div {
+                display: block;
+                padding: 0;
+                margin: 0;
+                width: 30%;
                 font-weight: bolder;
+                text-align: center;
+            }
+            #pause {
+                display: block;
+                width: auto;
+                height: 100%;
             }
     }
 }
@@ -44,7 +55,7 @@ body {
     top: 0;
     left: 0;
 }
-#start {
+#start, .continueBlock {
     width: 100vw;
     height: 100vh;
     background-color: transparentize($color: black, $amount: 0.2);
@@ -55,7 +66,7 @@ body {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
-    #startBtn {
+    #startBtn, #continue {
         display: block;
         height: 20%;
         align-self: center;
@@ -80,4 +91,7 @@ body {
         .none {
             display: none;
         }
+}
+.none {
+    display: none;
 }

@@ -2,7 +2,6 @@ let cat = document.getElementById("cat");
 let container = document.getElementById("background");
 let background = document.getElementById("backgroundImg");
 let width = background.getBoundingClientRect().width;
-console.log(width);
 let height = container.getBoundingClientRect().height;
 let catCoords = cat.getBoundingClientRect();
 let startBlock = document.getElementById("start");
@@ -17,6 +16,13 @@ let fishCount = 0;
 let seconds = 60;
 let time = seconds;
 let timer;
+let continueBlock = document.getElementsByClassName("continueBlock")[0];
+let pauseBtn = document.getElementById("pause");
+let continueBtn = document.getElementById("continue");
+let pause = false;
+
+fishCountBlock.style.fontSize = fishCountBlock.offsetHeight + "px";
+timeBlock.style.fontSize = fishCountBlock.offsetHeight + "px";
 
 function addKeypress(event) {
     let ar = "ArrowRight";
@@ -72,7 +78,7 @@ function fishfall(path, id, ms) {
     let fish = addFish(path, id);
     
     setInterval(() => {
-
+        if(pause) return;
         if(fishCount >= 0 ) {
         let fTop = parseFloat(getComputedStyle(fish).top);
         let fHeight = fish.offsetHeight;
@@ -146,4 +152,24 @@ function startGame(e) {
     fishfall(path, id, 150);
 }
 
+function paused() {
+    pause = true;
+    let fish = Array.from(document.getElementsByClassName("fishfall_anim"));
+    fish.forEach(elem => {
+        let position = parseFloat(getComputedStyle(elem).top);
+        elem.style.top = position + "px";
+    });
+
+    continueBlock.classList.remove("none");
+    clearInterval(timer);
+}
+
+function continueGame() {
+    pause = false;
+    continueBlock.classList.add("none");
+    tick();
+}
+
+continueBtn.addEventListener("click", continueGame);
+pauseBtn.addEventListener("click", paused);
 startButton.addEventListener("click", startGame);
