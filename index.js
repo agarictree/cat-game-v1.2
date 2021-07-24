@@ -14,7 +14,7 @@ let timeOverBlock = document.getElementsByClassName("timeOver")[0];
 let resultBlock = document.getElementById("result");
 let addedFish = document.getElementsByClassName("fishfall_anim");
 let fishCount = 0;
-let seconds = 10;
+let seconds = 60;
 let time = seconds;
 let timer;
 
